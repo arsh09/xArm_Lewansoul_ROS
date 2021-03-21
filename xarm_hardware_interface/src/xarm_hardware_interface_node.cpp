@@ -1,4 +1,5 @@
 #include <xarm_hardware_interface/xarm_hardware_interface.h>
+#include <ros/ros.h>
 #include <ros/callback_queue.h>
 
 int main(int argc, char** argv)
