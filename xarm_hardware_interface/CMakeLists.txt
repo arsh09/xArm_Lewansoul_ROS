@@ -40,7 +40,8 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_library(xarm
+add_library(
+  xarm
 	include/${PROJECT_NAME}/xarm.h
 	src/xarm.cpp
 )
@@ -49,28 +50,32 @@ target_link_libraries(xarm ${catkin_LIBRARIES})
 
 add_library(xarm_hardware_interface src/xarm_hardware_interface.cpp)
 add_dependencies(xarm_hardware_interface xarm )
-target_link_libraries(xarm_hardware_interface
+target_link_libraries(
+  xarm_hardware_interface
 	xarm
   hidapi-hidraw
-	${catkin_LIBRARIES})
+	${catkin_LIBRARIES}
+)
 
 add_executable(xarm_hardware_interface_node src/xarm_hardware_interface_node.cpp)
 add_dependencies(xarm_hardware_interface_node xarm_hardware_interface)
 
-target_link_libraries(xarm_hardware_interface_node
-	xarm_hardware_interface
-	${catkin_LIBRARIES})
+# target_link_libraries(
+#   xarm_hardware_interface_node
+# 	xarm_hardware_interface
+# 	${catkin_LIBRARIES}
+# )
   
 target_link_libraries(
   xarm
   hidapi-hidraw
 	${catkin_LIBRARIES}
-  )
-
-target_link_libraries(
-
-${catkin_LIBRARIES})
-
-target_link_libraries(${PROJECT_NAME}_node
-  ${catkin_LIBRARIES}
 )
+
+# target_link_libraries(
+#   ${catkin_LIBRARIES}
+# )
+
+# target_link_libraries(${PROJECT_NAME}_node
+#   ${catkin_LIBRARIES}
+# )
